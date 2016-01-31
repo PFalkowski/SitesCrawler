@@ -14,18 +14,20 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="90" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" VerticalAlignment="Top" Width="340"/>
-        <TextBlock Grid.Column="0" Grid.Row="0" x:Name="UrlAddress" HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" Grid.Row="0" x:Name="textBox" HorizontalAlignment="Left" Margin="41,22,0,0" TextWrapping="Wrap" Text="{Binding SelectedUri, Mode=TwoWay}" VerticalAlignment="Top" Width="150"/>
-        <TextBlock Grid.Column="0" Grid.Row="1" x:Name="elementName" HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" Text="Element Id" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" Grid.Row="1" x:Name="textBox2" HorizontalAlignment="Left" Margin="41,22,0,0" TextWrapping="Wrap" Text="{Binding SelectedElement, Mode=TwoWay}" VerticalAlignment="Top" Width="150"/>
-        <TextBlock Grid.Column="0" Grid.Row="2" x:Name="resultName" HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" Text="Result" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" Grid.Row="2" x:Name="result" HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" Text="{Binding Result, Mode=OneWay}" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" x:Name="UrlAddress" HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" Text="URL(s)" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="TextBox" TextWrapping="Wrap" Text="{Binding SelectedUri, Mode=TwoWay}"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" x:Name="ElementName" HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" Text="Element Id" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="TextBox2" TextWrapping="Wrap" Text="{Binding SelectedElement, Mode=TwoWay}"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" x:Name="ResultName" HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" Text="Result" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="Result" TextWrapping="Wrap" Text="{Binding Result, Mode=OneWay}" />
+        <Button x:Name="GoButton" Content="Go" Command="{Binding GoCommand}" Grid.Row="3" Grid.Column="1" />
     </Grid>
 </Page>
  

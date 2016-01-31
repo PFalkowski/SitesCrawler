@@ -15,7 +15,7 @@ namespace WebCrawler
         {
             GoCommand = new DelegateCommand(Go);
         }
-        private string _uriSelected = "http//:";
+        private string _uriSelected = "https://open.spotify.com/track/0Whk9DxnRVIYDT5cpa1dML";
         public string SelectedUri
         {
             get { return _uriSelected; }
@@ -23,16 +23,13 @@ namespace WebCrawler
             {
                 if (value != _uriSelected)
                 {
+                    _uriSelected = value;
                     OnPropertyChanged();
-                    if (Uri.IsWellFormedUriString(value, UriKind.Absolute))
-                    {
-                        _uriSelected = value;
-                    }
                 }
             }
         }
 
-        private string _selectedElement;
+        private string _selectedElement = "title";
         public string SelectedElement
         {
             get { return _selectedElement; }
@@ -51,7 +48,7 @@ namespace WebCrawler
         public string Result
         {
             get { return _result; }
-            set
+            private set
             {
                 if (value != _result)
                 {
@@ -60,13 +57,19 @@ namespace WebCrawler
                 }
             }
         }
-        private Crawler _crawler = new Crawler();
+        private readonly Crawler _crawler = new Crawler();
 
         public DelegateCommand GoCommand { get; private set; }
 
-        private void Go()
+        private async void Go()
         {
-            Result = _crawler.GetFirstById(new Uri(SelectedUri), SelectedElement).Result;
+            var temp = string.Empty;
+            await Task.Run(() =>
+            {
+                temp = _crawler.GetFirstById(SelectedUri, SelectedElement);
+            });
+            Result = temp;
         }
     }
 }
+
