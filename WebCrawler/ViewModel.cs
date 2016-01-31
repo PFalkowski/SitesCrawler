@@ -9,15 +9,19 @@ namespace WebCrawler
 {
     public class ViewModel : BindableBase
     {
-        private string _uriSelected ;
+        private string _uriSelected = "http//:";
         public string SelectedUri
         {
             get { return _uriSelected; }
             set
             {
-                if (Uri.IsWellFormedUriString(value, UriKind.RelativeOrAbsolute))
+                if (value != _uriSelected)
                 {
-                    _uriSelected = value;
+                    OnPropertyChanged();
+                    if (Uri.IsWellFormedUriString(value, UriKind.Absolute))
+                    {
+                        _uriSelected = value;
+                    }
                 }
             }
         }
